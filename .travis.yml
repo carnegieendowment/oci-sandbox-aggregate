@@ -1,30 +1,25 @@
 language: node_js
 node_js:
-  - "4.2"
-
+- '4.2'
 env:
   global:
   - DEPLOY_BRANCH=master
-  - secure: "UdIhbBbt2mIHkjlQR93v44LfRO+7oBoXuLEi1YGoLXZsE6veH9vnR6qMRBLwUDABZjjJHm1KqhYlkHmCOpChEKDzu+1k3h3DLzJlNKgZbYKA3SK5+IeDV32EvpSeTCWpS1e0i0+pOUdn4JJrWzKygnBn2tB/3XUJOU8xh1NIjR7ZXYGeh/y2Qd2Zfvvo0rnU0vQURHBmwLd1VscbxDiky+rP+PRwA25R4bSayTdHIiXsFDsRkGPkazPWh5+YzOM8Pr71xs4JPAtbUFESb99Ix+an1kqJCrRQm6Y3mIKZIeGacX+XsrGdN8R5B4gWFEStgKGNWncvll+7NSqQ/jMhwsasyI5V3Fsk/85cxCAN+yArKBBiVlJTGRUli3TsRJr3rLXQAlHpQEyQCido7L+4BOA6eWZPYa1PAstkkesxJ4qbtfKJEu9lqzmBkmxlhTqccNIthItFM38b9eYJ2xIbKQaZs3QgMQd42bwTyD88A1RbJvvUpRJNmdWNSAkNbUu23cIH7t8ZHqK9Jl92mE1KpgFTOALzIe9ap7vCP9fIxtlPzT9rtSCkm3cWSBOvBYLlpLj4UB8j3TlQJa+IfZJGHb6d/zx7W5BBQi8BuY+xqF1LvrEvMzrMTQQIX0jQV/2oIKf2/mvO/7h0vsOlREM9Ssh1AbJW9JNptjgRojIx63Q=" # GH_TOKEN
-
+  - secure: UdIhbBbt2mIHkjlQR93v44LfRO+7oBoXuLEi1YGoLXZsE6veH9vnR6qMRBLwUDABZjjJHm1KqhYlkHmCOpChEKDzu+1k3h3DLzJlNKgZbYKA3SK5+IeDV32EvpSeTCWpS1e0i0+pOUdn4JJrWzKygnBn2tB/3XUJOU8xh1NIjR7ZXYGeh/y2Qd2Zfvvo0rnU0vQURHBmwLd1VscbxDiky+rP+PRwA25R4bSayTdHIiXsFDsRkGPkazPWh5+YzOM8Pr71xs4JPAtbUFESb99Ix+an1kqJCrRQm6Y3mIKZIeGacX+XsrGdN8R5B4gWFEStgKGNWncvll+7NSqQ/jMhwsasyI5V3Fsk/85cxCAN+yArKBBiVlJTGRUli3TsRJr3rLXQAlHpQEyQCido7L+4BOA6eWZPYa1PAstkkesxJ4qbtfKJEu9lqzmBkmxlhTqccNIthItFM38b9eYJ2xIbKQaZs3QgMQd42bwTyD88A1RbJvvUpRJNmdWNSAkNbUu23cIH7t8ZHqK9Jl92mE1KpgFTOALzIe9ap7vCP9fIxtlPzT9rtSCkm3cWSBOvBYLlpLj4UB8j3TlQJa+IfZJGHb6d/zx7W5BBQi8BuY+xqF1LvrEvMzrMTQQIX0jQV/2oIKf2/mvO/7h0vsOlREM9Ssh1AbJW9JNptjgRojIx63Q=
+  - secure: aRtsM6OilrTW0aIeVCvTfQuzSoBYcf+gnWCnbcbX2pseMeCcTyDEiiuj8+nfNUgzvyb6MXxiVv/vS+z6h4vH9l4H1bzGGXx6kIQJ3uYlspNSu2x2erxxyXhcEmX4pAlBkKAaTD/twK7OKfIo6DQfvkf6zbi1SO8GLcHIWz/3F3qEkWyXNYps3pR62E642IO8stCW0bDu+NYDAVleKE6Pw/gbpxx/H/RIBPYqtkLLL6CHbTMQEXEF4pckxPnICrO/KaDWfymNN0vurSSVEWK0t9ZDxz3vPAV6HAGy/gLuRdaDIC0ak8kG3Q/SR1YYIl24bncAfjfB9sPUQ150/Pv9V+AcQtM5rqyVkK4KKKqOyZepLSmRhEaN/vqnhunisfgLwSdNIpV6uRPVCXZVaZe572mzOuiMMivLo92r3HXDZuvynXymrUdbNpqf9ngXvxKiQo0NkPleaX0acheR9B61EC1qCBB8nSIPsmaPo1mzuoY4y08gjd0ona0WBt1t+9q8GnDx0XxlebWFvr5D6WF1V5hKwntEXBmnKAv/Y0e6vct3/ajy1kJy1AbrlQzV7HNY9lZ7qLQZRQa3wkPypNa7UkIESgghTJEhyXzp1L30RJVB51rDxP3zW5G5pwCWcBXKchjw0s6IJgHNMjnbiOOGREtQgcjFFAn/zZ1efB8iT1o=
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
 - chmod +x ./.build_scripts/deploy.sh
 - chmod +x ./.build_scripts/precalc.js
-
 before_script:
 - npm test
 - node ./.build_scripts/precalc.js
-
 script:
 - npm run build
-
 deploy:
   provider: script
   skip_cleanup: true
-  script: .build_scripts/deploy.sh
+  script: ".build_scripts/deploy.sh"
   on:
-    branch: ${DEPLOY_BRANCH}
+    branch: "${DEPLOY_BRANCH}"
