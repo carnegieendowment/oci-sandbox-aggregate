@@ -296,7 +296,7 @@ var CompareView = BaseView.extend({
 
     // if we don't have the necessary data, load it
     var opgeeRun = utils.getOPGEEModel(params.solarSteam, params.water, params.flaring);
-    var prelimRun = utils.getPRELIMModel(params.refinery, params.lpg);
+    var prelimRun = utils.getPRELIMModel(params.refinery, params.lpg, params.hydrogen);
     if (!Oci.Collections.opgee.get(opgeeRun)) {
       var opgeeModel = new OpgeeModel({ id: opgeeRun });
       opgeeModel.fetch({ async: false, success: function (data) {
