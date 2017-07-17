@@ -18,6 +18,8 @@ var waterValues;
 var waterLabels;
 var cokeValues;
 var cokeLabels;
+var hydrogenValues;
+var hydrogenLabels
 
 var ModelParameters = Backbone.View.extend({
 
@@ -50,6 +52,7 @@ var ModelParameters = Backbone.View.extend({
       water: (this.waterSlider.get() / 100),
       flaring: (this.flaringSlider.get() / 100),
       showCoke: (this.cokeSlider.get() / 100),
+      hydrogen: (this.hydrogenSlider.get() / 100),
       refinery: $('#dropdown-refinery').val(),
       lpg: $('#toggle-lpg').is(':checked')
     };
@@ -79,6 +82,9 @@ var ModelParameters = Backbone.View.extend({
         // We know the format of the param 'run##'
         var refinery = params.prelim[3];
         var lpg = params.prelim[4];
+        var hydrogen = params.prelim[5];
+        var hydrogenValue = parseFloat(Oci.data.metadata.hydrogen.split(',')[hydrogen]) * 100;
+        this.hydrogenSlider.set(hydrogenValue);
         $('#dropdown-refinery').prop('selectedIndex', refinery);
         $('#toggle-lpg').attr('checked', Boolean(lpg));
       } catch (e) {
@@ -98,6 +104,8 @@ var ModelParameters = Backbone.View.extend({
     $('.value.solar-steam span').html(solarSteam + '%');
     var flaring = parseInt(this.flaringSlider.get());
     $('.value.flare span').html(flaring + '%');
+    var hydrogen = parseInt(this.hydrogenSlider.get());
+    $('.value.hydrogen span').html(hydrogen + '%');
     var water = parseInt(this.waterSlider.get());
     $('.value.water span').html(water + '%');
     var petcoke = parseInt(this.cokeSlider.get());
@@ -144,6 +152,25 @@ var ModelParameters = Backbone.View.extend({
       }
     });
     this.solarSteamSlider.on('update', function (value) {
+      self.trigger('sliderUpdate', value);
+    });
+
+   this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
+      start: 1,
+      connect: 'lower',
+      snap: true,
+      range: _.zipObject(hydrogenLabels, hydrogenValues),
+      pips: {
+        mode: 'values',
+        values: hydrogenValues,
+        density: 10,
+        format: wNumb({
+          postfix: '%'
+        }),
+        stepped: true
+      }
+    });
+    this.hydrogenSlider.on('update', function (value) {
       self.trigger('sliderUpdate', value);
     });
 
@@ -216,10 +243,12 @@ var ModelParameters = Backbone.View.extend({
 
     solarSteamValues = this.metadataToArray(m.solarSteam);
     flaringValues = this.metadataToArray(m.flare);
+    hydrogenValues = this.metadataToArray(m.hydrogen);
     waterValues = this.metadataToArray(m.water);
     cokeValues = [0, 50, 100];
 
     solarSteamLabels = this.sliderHelper(solarSteamValues);
+    hydrogenLabels = this.sliderHelper(hydrogenValues);
     flaringLabels = this.sliderHelper(flaringValues);
     waterLabels = this.sliderHelper(waterValues);
     cokeLabels = this.sliderHelper(cokeValues);
