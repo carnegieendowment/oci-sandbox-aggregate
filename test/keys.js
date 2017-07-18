@@ -20,7 +20,7 @@ test('All possible runs should be readable', function (t) {
   var wi = metadata.water.split(',');
   var fi = metadata.flare.split(',');
   var ri = metadata.refinery.split(',');
-  var hi = metadata.hydrogen.split(',');
+  var zi = metadata.hydrogen.split(',');
   var li = [1, 0];
 
   si.forEach(function (_, s) {
@@ -31,10 +31,10 @@ test('All possible runs should be readable', function (t) {
     });
   });
 
-  ri.forEach(function (_, r) {
-    li.forEach(function (_, l) {
-      hi.forEach(function (_, h) {
-        t.notThrows(function () { JSON.parse(fs.readFileSync('../app/assets/data/prelim/prelim_run' + r + l + h + '.json')); });
+  zi.forEach(function (_, z) {
+    ri.forEach(function (_, r) {
+      li.forEach(function (_, l) {
+        t.notThrows(function () { JSON.parse(fs.readFileSync('../app/assets/data/prelim/prelim_run' + z + r + l + '.json')); });
       });
     });
   });
