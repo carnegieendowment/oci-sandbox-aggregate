@@ -82,7 +82,7 @@ var ModelParameters = Backbone.View.extend({
         // We know the format of the param 'run##'
         var refinery = params.prelim[3];
         var lpg = params.prelim[4];
-        var hydrogen = params.prelim[2];
+        var hydrogen = params.prelim[5];
         var hydrogenValue = parseFloat(Oci.data.metadata.hydrogen.split(',')[hydrogen]) * 100;
         this.hydrogenSlider.set(hydrogenValue);
         $('#dropdown-refinery').prop('selectedIndex', refinery);
