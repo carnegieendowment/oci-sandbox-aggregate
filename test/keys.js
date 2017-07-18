@@ -20,6 +20,7 @@ test('All possible runs should be readable', function (t) {
   var wi = metadata.water.split(',');
   var fi = metadata.flare.split(',');
   var ri = metadata.refinery.split(',');
+  var hi = metadata.hydrogen.split(',');
   var li = [1, 0];
 
   si.forEach(function (_, s) {
