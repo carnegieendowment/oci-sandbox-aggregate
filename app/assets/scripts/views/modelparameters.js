@@ -175,7 +175,7 @@ var ModelParameters = Backbone.View.extend({
     });
 
     this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
-      start: 100,
+      start: 0,
       connect: 'lower',
       snap: true,
       range: _.zipObject(hydrogenLabels, hydrogenValues),
