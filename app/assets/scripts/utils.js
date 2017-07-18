@@ -632,7 +632,7 @@ var utils = {
   },
 
   // Get the current PRELIM model
-  getPRELIMModel: function (refinery, lpg, hydrogen) {
+  getPRELIMModel: function (hydrogen, refinery, lpg) {
     var metadata = Oci.data.metadata;
     var ri = this.trimMetadataArray(metadata.refinery.split(',')).indexOf(refinery);
     var zi = this.trimMetadataArray(metadata.hydrogen.split(',')).indexOf(hydrogen);
