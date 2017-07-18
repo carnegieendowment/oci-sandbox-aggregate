@@ -71,12 +71,12 @@ var utils = {
           }
         }
       }
-      for (var l = 0; l < data.metadata.refinery.split(',').length; l++) {
+      for (var z = 0; z < data.metadata.hydrogen.split(',').length; z++) {
         // this for loop is for LPG runs
-        for (var m = 0; m < 2; m++) {
-          for (var h = 0; h < data.metadata.hydrogen.split(',').length; h++) {
+        for (var l = 0; l < data.metadata.refinery.split(',').length; l++) {
+          for (var m = 0; m < 2; m++) {
             // if we don't have the necessary data, load it
-            var prelimRun = 'run' + l + m + h;
+            var prelimRun = 'run' + z + l + m;
 
             if (!Oci.Collections.prelim.get(prelimRun)) {
               var prelimModel = new PrelimModel({ id: prelimRun });
@@ -635,15 +635,15 @@ var utils = {
   getPRELIMModel: function (refinery, lpg, hydrogen) {
     var metadata = Oci.data.metadata;
     var ri = this.trimMetadataArray(metadata.refinery.split(',')).indexOf(refinery);
-    var hi = this.trimMetadataArray(metadata.hydrogen.split(',')).indexOf(hydrogen);
+    var zi = this.trimMetadataArray(metadata.hydrogen.split(',')).indexOf(hydrogen);
     var li = Number(lpg);
     // Generate model string
     var model = 'run';
     // If we don't have a match, return default
-    if (ri === -1 || hi === -1) {
-      model += ('0' + li + '0');
+    if (ri === -1 || zi === -1) {
+      model += ('00' + li);
     } else {
-      model = model + ri + li + hi;
+      model = model + zi + ri + li;
     }
     return model;
   },
