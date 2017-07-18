@@ -641,7 +641,7 @@ var utils = {
     var model = 'run';
     // If we don't have a match, return default
     if (ri === -1 || hi === -1) {
-      model += ('0' + li + '0');
+      model += ('0' + li + hi);
     } else {
       model = model + ri + li + hi;
     }
