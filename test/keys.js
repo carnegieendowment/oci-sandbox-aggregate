@@ -32,7 +32,9 @@ test('All possible runs should be readable', function (t) {
 
   ri.forEach(function (_, r) {
     li.forEach(function (_, l) {
-      t.notThrows(function () { JSON.parse(fs.readFileSync('../app/assets/data/prelim/prelim_run' + r + l + '.json')); });
+      hi.forEach(function (_, h) {
+        t.notThrows(function () { JSON.parse(fs.readFileSync('../app/assets/data/prelim/prelim_run' + r + l + h + '.json')); });
+      });
     });
   });
 });
