@@ -17,7 +17,7 @@ var si = utils.trimMetadataArray(metadata.solarSteam.split(','));
 var wi = utils.trimMetadataArray(metadata.water.split(','));
 var fi = utils.trimMetadataArray(metadata.flare.split(','));
 var ri = utils.trimMetadataArray(metadata.refinery.split(','));
-var hi = utils.trimMetadataArray(metadata.hydrogen.split(','));
+var zi = utils.trimMetadataArray(metadata.hydrogen.split(','));
 var li = [1, 0];
 
 si.forEach(function (_, s) {
@@ -29,11 +29,11 @@ si.forEach(function (_, s) {
   });
 });
 
-ri.forEach(function (_, r) {
-  li.forEach(function (_, l) {
-    hi.forEach(function (_, h) {
-      var temp = JSON.parse(fs.readFileSync('app/assets/data/prelim/prelim_run' + r + l + h + '.json'));
-      Oci.data.prelim['run' + r + l + h] = temp;
+hi.forEach(function (_, z) {
+  ri.forEach(function (_, r) {
+    li.forEach(function (_, l) {
+      var temp = JSON.parse(fs.readFileSync('app/assets/data/prelim/prelim_run' + z + r + l + '.json'));
+      Oci.data.prelim['run' + z + r + l] = temp;
     });
   });
 });
