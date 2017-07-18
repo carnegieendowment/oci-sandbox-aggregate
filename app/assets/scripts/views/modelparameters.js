@@ -213,7 +213,7 @@ var ModelParameters = Backbone.View.extend({
     });
 
     this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
-      start: 0,
+      start: 100,
       connect: 'lower',
       snap: true,
       range: _.zipObject(hydrogenLabels, hydrogenValues),
@@ -230,7 +230,6 @@ var ModelParameters = Backbone.View.extend({
     this.hydrogenSlider.on('update', function (value) {
       self.trigger('sliderUpdate', value);
     });
-  },
 
   toggleModelParameters: function (e) {
     e.preventDefault();
