@@ -174,7 +174,7 @@ var ModelParameters = Backbone.View.extend({
       self.trigger('sliderUpdate', value);
     });
 
-   this.waterSlider = noUiSlider.create($('#slider-water')[0], {
+     this.waterSlider = noUiSlider.create($('#slider-water')[0], {
       start: 100,
       connect: 'lower',
       snap: true,
@@ -212,7 +212,7 @@ var ModelParameters = Backbone.View.extend({
       self.trigger('sliderUpdate', value);
     });
 
-   this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
+    this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
       start: 0,
       connect: 'lower',
       snap: true,
