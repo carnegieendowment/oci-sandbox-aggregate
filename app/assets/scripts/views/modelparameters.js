@@ -174,26 +174,7 @@ var ModelParameters = Backbone.View.extend({
       self.trigger('sliderUpdate', value);
     });
 
-    this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
-      start: 0,
-      connect: 'lower',
-      snap: true,
-      range: _.zipObject(hydrogenLabels, hydrogenValues),
-      pips: {
-        mode: 'values',
-        values: hydrogenValues,
-        density: 10,
-        format: wNumb({
-          postfix: '%'
-        }),
-        stepped: true
-      }
-    });
-    this.hydrogenSlider.on('update', function (value) {
-      self.trigger('sliderUpdate', value);
-    });
-
-    this.waterSlider = noUiSlider.create($('#slider-water')[0], {
+   this.waterSlider = noUiSlider.create($('#slider-water')[0], {
       start: 100,
       connect: 'lower',
       snap: true,
@@ -228,6 +209,25 @@ var ModelParameters = Backbone.View.extend({
       }
     });
     this.cokeSlider.on('update', function (value) {
+      self.trigger('sliderUpdate', value);
+    });
+
+   this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
+      start: 0,
+      connect: 'lower',
+      snap: true,
+      range: _.zipObject(hydrogenLabels, hydrogenValues),
+      pips: {
+        mode: 'values',
+        values: hydrogenValues,
+        density: 10,
+        format: wNumb({
+          postfix: '%'
+        }),
+        stepped: true
+      }
+    });
+    this.hydrogenSlider.on('update', function (value) {
       self.trigger('sliderUpdate', value);
     });
   },
