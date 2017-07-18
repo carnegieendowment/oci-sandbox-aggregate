@@ -29,7 +29,7 @@ si.forEach(function (_, s) {
   });
 });
 
-hi.forEach(function (_, z) {
+zi.forEach(function (_, z) {
   ri.forEach(function (_, r) {
     li.forEach(function (_, l) {
       var temp = JSON.parse(fs.readFileSync('app/assets/data/prelim/prelim_run' + z + r + l + '.json'));
