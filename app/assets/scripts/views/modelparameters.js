@@ -230,6 +230,7 @@ var ModelParameters = Backbone.View.extend({
     this.hydrogenSlider.on('update', function (value) {
       self.trigger('sliderUpdate', value);
     });
+  }
 
   toggleModelParameters: function (e) {
     e.preventDefault();
