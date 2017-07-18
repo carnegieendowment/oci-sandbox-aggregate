@@ -155,25 +155,6 @@ var ModelParameters = Backbone.View.extend({
       self.trigger('sliderUpdate', value);
     });
 
-    this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
-      start: 1,
-      connect: 'lower',
-      snap: true,
-      range: _.zipObject(hydrogenLabels, hydrogenValues),
-      pips: {
-        mode: 'values',
-        values: hydrogenValues,
-        density: 10,
-        format: wNumb({
-          postfix: '%'
-        }),
-        stepped: true
-      }
-    });
-    this.hydrogenSlider.on('update', function (value) {
-      self.trigger('sliderUpdate', value);
-    });
-
     this.flaringSlider = noUiSlider.create($('#slider-flaring')[0], {
       start: 100,
       connect: 'lower',
@@ -190,6 +171,25 @@ var ModelParameters = Backbone.View.extend({
       }
     });
     this.flaringSlider.on('update', function (value) {
+      self.trigger('sliderUpdate', value);
+    });
+      
+   this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
+      start: 1,
+      connect: 'lower',
+      snap: true,
+      range: _.zipObject(hydrogenLabels, hydrogenValues),
+      pips: {
+        mode: 'values',
+        values: hydrogenValues,
+        density: 10,
+        format: wNumb({
+          postfix: '%'
+        }),
+        stepped: true
+      }
+    });
+    this.hydrogenSlider.on('update', function (value) {
       self.trigger('sliderUpdate', value);
     });
 
@@ -248,8 +248,8 @@ var ModelParameters = Backbone.View.extend({
     cokeValues = [0, 50, 100];
 
     solarSteamLabels = this.sliderHelper(solarSteamValues);
-    hydrogenLabels = this.sliderHelper(hydrogenValues);
     flaringLabels = this.sliderHelper(flaringValues);
+    hydrogenLabels = this.sliderHelper(hydrogenValues);
     waterLabels = this.sliderHelper(waterValues);
     cokeLabels = this.sliderHelper(cokeValues);
   },
