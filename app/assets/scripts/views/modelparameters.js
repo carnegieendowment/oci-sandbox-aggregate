@@ -173,8 +173,8 @@ var ModelParameters = Backbone.View.extend({
     this.flaringSlider.on('update', function (value) {
       self.trigger('sliderUpdate', value);
     });
-      
-   this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
+  
+    this.hydrogenSlider = noUiSlider.create($('#slider-hydrogen')[0], {
       start: 1,
       connect: 'lower',
       snap: true,
