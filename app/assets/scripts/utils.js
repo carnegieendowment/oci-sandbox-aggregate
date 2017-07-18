@@ -643,7 +643,7 @@ var utils = {
     if (ri === -1 || zi === -1) {
       model += ('00' + li);
     } else {
-      model = model + zi + ri + li
+      model = model + zi + ri + li;
     }
     return model;
   },
