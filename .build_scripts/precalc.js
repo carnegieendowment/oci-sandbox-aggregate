@@ -17,7 +17,7 @@ var si = utils.trimMetadataArray(metadata.solarSteam.split(','));
 var wi = utils.trimMetadataArray(metadata.water.split(','));
 var fi = utils.trimMetadataArray(metadata.flare.split(','));
 var ri = utils.trimMetadataArray(metadata.refinery.split(','));
-var zi = utils.trimMetadataArray(metadata.hydrogen.split(','));
+var zi = [1, 0];
 var li = [1, 0];
 
 si.forEach(function (_, s) {
