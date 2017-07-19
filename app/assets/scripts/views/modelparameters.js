@@ -101,7 +101,7 @@ var ModelParameters = Backbone.View.extend({
     $('.value.solar-steam span').html(solarSteam + '%');
     var flaring = parseInt(this.flaringSlider.get());
     $('.value.flare span').html(flaring + '%');
-    var hydrogen = $('#toggle-hydrogen').is(':checked') ? 'Natural Gas' : 'Renewable';
+    var hydrogen = $('#toggle-hydrogen').is(':checked') ? 'No' : 'Yes';
     $('.value.hydrogen span').html(hydrogen);
     var water = parseInt(this.waterSlider.get());
     $('.value.water span').html(water + '%');
