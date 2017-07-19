@@ -298,7 +298,25 @@ input[type=radio] {
   color: #fff;
   content: "On";
 }
-
+.switch.hydrogen-override {
+  .switch-ui:after {
+    content: "Natural Gas";
+    padding-right: 10px;
+  }
+  input:checked ~ .switch-ui:after { content: "Renewable Energy"; }
+}
+.switch input:checked ~ .switch-ui {
+  background: tint($base-color, 20%);
+}
+.switch input:checked ~ .switch-ui:before {
+  left: calc(100% - 24px);
+}
+.switch input:checked ~ .switch-ui:after {
+  @extend .antialiased;
+  text-align: left;
+  color: #fff;
+  content: "Natural Gas";
+}
 
 // SLIDERS noUiSlider.js
 
