@@ -71,7 +71,7 @@ var utils = {
           }
         }
       }
-      for (var z = 0; z < data.metadata.hydrogen.split(',').length; z++) {
+      for (var z = 0; z < 2; z++) {
         // this for loop is for LPG runs
         for (var l = 0; l < data.metadata.refinery.split(',').length; l++) {
           for (var m = 0; m < 2; m++) {
@@ -635,15 +635,15 @@ var utils = {
   getPRELIMModel: function (hydrogen, refinery, lpg) {
     var metadata = Oci.data.metadata;
     var ri = this.trimMetadataArray(metadata.refinery.split(',')).indexOf(refinery);
-    var zi = this.trimMetadataArray(metadata.hydrogen.split(',')).indexOf(hydrogen);
+    var zi = Number(hydrogen);
     var li = Number(lpg);
     // Generate model string
     var model = 'run';
     // If we don't have a match, return default
-    if (ri === -1 || zi === -1) {
-      model += ('0' + '0' + li);
+    if (ri === -1) {
+      model += (zi + '0' + li);
     } else {
-      model += [zi, ri, li].join('');
+      model = model + zi + ri + li;
     }
     return model;
   },
