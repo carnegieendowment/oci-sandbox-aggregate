@@ -58,7 +58,7 @@ var utils = {
           }
         }
       }
-      for (var z = 0; z < data.metadata.hydrogen.split(',').length; z++) {
+      for (var z = 0; z < 2; z++) {
         // this for loop is for LPG runs
         for (var l = 0; l < data.metadata.refinery.split(',').length; l++) {
           for (var m = 0; m < 2; m++) {
