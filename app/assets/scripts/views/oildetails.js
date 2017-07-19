@@ -21,6 +21,7 @@ var OilDetails = BaseView.extend({
 
   events: {
     'change #toggle-lpg': 'handleParametersChange',
+    'change #toggle-hydrogen': 'handleParametersChange',
     'change .config-dropdown': 'handleDropdown',
     'click #oil-details-share': 'handleShare',
     'click .carosel-arrow': 'handleCarosel',
@@ -255,7 +256,7 @@ var OilDetails = BaseView.extend({
     var defaultModelData = {
       info: Oci.data.info,
       opgee: Oci.Collections.opgee.get(utils.getOPGEEModel('0', '0', '0')).toJSON(),
-      prelim: Oci.Collections.prelim.get(utils.getPRELIMModel('1', '0 = Default', 1)).toJSON()
+      prelim: Oci.Collections.prelim.get(utils.getPRELIMModel(1, '0 = Default', 1)).toJSON()
     };
 
     // Grab things based on the model we're using
